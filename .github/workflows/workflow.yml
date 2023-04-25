@@ -1,3 +1,5 @@
+#
+
 name: Flutter Web
 on:
   push:
@@ -31,4 +33,4 @@ jobs:
           git checkout -b gh-pages
           git add --all
           git commit -m "update"
-          git push origin master -f
+          git push origin gh-pages -f
