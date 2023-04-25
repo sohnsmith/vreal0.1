@@ -1,36 +1,16 @@
-#
+name: gh-pages
 
-name: Flutter Web
 on:
   push:
-    branches:
-      - master
+    branches: [master]
+
 jobs:
   build:
-    name: Build Web
-    env:
-      my_secret: $
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
+      - uses: bluefireteam/flutter-gh-pages@v7
         with:
-          channel: 'dev'
-      - run: flutter config --enable-web
-      - run: flutter pub get
-      - run: flutter build web --release
-        working-directory: ./vreal0_1
-      - run: 
-          cd vreal0_1/build/web 
-          git init
-
-          git config --global user.email artistj1015@gmail.com
-
-          git config --global user.name sohnsmith
-          git status
-
-          git remote add origin https://github.com/sohnsmith/vreal0.1.git 
-          git checkout -b gh-pages
-          git add --all
-          git commit -m "update"
-          git push origin gh-pages -f
+          baseHref: /your-repo-name/
