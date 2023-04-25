@@ -15,11 +15,10 @@ jobs:
         with:
           channel: 'dev'
       - run: flutter config --enable-web
-      # - run: flutter pub get
+      - run: flutter pub get
       - run: flutter build web --release
         working-directory: ./vreal0_1
-      - run: |
-          # 2. change path to [existed lib/main.dart path]/build/web
+      - run: 
           cd vreal0_1/build/web 
           git init
 
@@ -32,4 +31,4 @@ jobs:
           git checkout -b gh-pages
           git add --all
           git commit -m "update"
-          git push origin gh-pages -f
+          git push origin master -f
